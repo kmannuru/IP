@@ -47,6 +47,25 @@ public class LinkedList {
 
         }
     }
+    
+    public boolean isCircular(){
+        Node currentNode = this.head;
+        Node slow,fast;
+        while(true){
+            slow = currentNode.nextNode;
+            if(slow == null){
+                return false;
+            }
+            fast = currentNode.getNextNode().getNextNode();
+            if(fast == null){
+                return false;
+            }
+            if(slow == fast || fast.getNextNode() == slow){
+                return true;
+            }
+            currentNode = currentNode.getNextNode();
+        }
+    }
 
     public Node findElementFromEnd(int number){
         Node currentNode = this.head;
