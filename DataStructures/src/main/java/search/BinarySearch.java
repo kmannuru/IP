@@ -3,21 +3,26 @@ package search;
 public class BinarySearch {
 
     public static void main(String[] args){
-        int[] arr = {1,2,3,4,5,6,7,8,9};
+        int[] arr = {2,3,4,5,6,7,8,9};
 
         //search
-        int prevIndex=0;
-        int max = arr.length-1;
-        int currentIndex = (prevIndex+max)/2;
-        int searchValue = 5;
+        int searchNumber = 2;
+        int min=0, max= arr.length-1;
+        int mid = min+((max-min)/2);
 
-        while (arr[currentIndex] != searchValue){
-            prevIndex = currentIndex;
-            currentIndex = (prevIndex+max)/2;
-            if(prevIndex == currentIndex){
-                break;
+        while(mid != min && arr[mid] != searchNumber){
+            if(arr[mid] > searchNumber){
+                max = mid;
+            }else {
+                min = mid;
             }
+            mid = min+(max-min)/2;
+        }
 
+        if(arr[mid] == searchNumber){
+            System.out.println("Number "+searchNumber+" found at index :"+mid);
+        }else{
+            System.out.println("Number not found");
         }
 
     }
